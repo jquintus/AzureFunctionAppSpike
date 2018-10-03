@@ -12,6 +12,22 @@ namespace FunctionApp1
 
         public static int _count = 0;
 
+        [FunctionName(nameof(MultipleOutputExample))]
+        public static void MultipleOutputExample(
+            [QueueTrigger("BBB", Connection = "")]string input,
+            [Queue("BBB-1")] ICollector<string> q1,
+            [Queue("BBB-2")] ICollector<string> q2,
+            [Queue("BBB-3")] out string output
+            )
+        {
+            q1.Add($"ONE {input}");
+
+            q2.Add($"TWO {input}");
+            q2.Add($"TWO {input}");
+
+            output = $"Output for {input}";
+        }
+
         [FunctionName(nameof(Run))]
         [return: Queue(O365_QUEUE)]
         public static InternalMessage Run(
