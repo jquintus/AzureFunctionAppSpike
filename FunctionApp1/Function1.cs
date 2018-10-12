@@ -80,33 +80,4 @@ namespace FunctionApp1
             return next;
         }
     }
-
-    public class InternalMessage
-    {
-        public string Body { get; set; }
-        public string From { get; set; }
-        public string Subject { get; set; }
-        public string To { get; set; }
-
-        public override string ToString() => $"Internal Message {Subject}";
-    }
-
-    public class O365Message
-    {
-        public string Body { get; set; }
-        public string From { get; set; }
-        public string Subject { get; set; }
-        public string To { get; set; }
-
-        public override string ToString() => $"O365 Message {Subject}";
-    }
-
-    public class ParsedMessage
-    {
-        public string Body { get; set; }
-        public List<string> Participants { get; set; }
-        public string Subject { get; set; }
-
-        public override string ToString() => $"Parsed Message {Subject}";
-    }
 }
